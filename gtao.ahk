@@ -1,4 +1,4 @@
-; version 2021060100 ; don't touch this line please
+; version 2021060102 ; don't touch this line please
 
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
@@ -16,6 +16,7 @@ CbText := StrReplace(Clipboard, "`t", "  ")
 Loop, Parse, CbText, `n, `r
 {
   sendMessageToChat(A_LoopField)
+  Sleep 1000
 }
 return
 
@@ -29,7 +30,6 @@ sendMessageToChat(text) {
   Sleep 100
   Send {raw}%text%
   Send {Enter}
-  Sleep 1000
 }
 
 tryUpdate() {
@@ -43,7 +43,7 @@ tryUpdate() {
   FileReadLine, currentVersion, %A_ScriptName%, 1
   if (newVersion = currentVersion) {
     FileDelete, update.txt
-  } else if InStr(update, " version" ) {
+  } else if InStr(newVersion, " version" ) {
     FileCopy, update.txt, %A_ScriptName%, 1
     FileDelete, update.txt
     Reload
