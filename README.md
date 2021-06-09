@@ -13,5 +13,5 @@ An AutoHotKey script that brings some convenience
 
 ## Features
 
-Press `Ctrl+Shift+T` to send copied text into chat.
+Press `Ctrl+Shift+T` to send copied text to the in-game chat.
 If your text contains multiple lines, multiple messages will be sent with one line per message.
